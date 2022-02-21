@@ -1,2 +1,5 @@
 SimpleIndexer\__pycache__
 TransformerTorchEncoder\__pycache__
+*.pyc
+*.pyc
+*.pyc
