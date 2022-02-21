@@ -1,7 +1,8 @@
 from docarray import Document, DocumentArray
 from jina import Executor
 
-encoder = Executor.load_config('TransformerTorchEncoder/config.yml')
+encoder = Executor.load_config(
+    'TransformerTorchEncoder/config.yml', uses_with={'device': 'cuda'})
 indexer = Executor.load_config('SimpleIndexer/config.yml')
 
 da = DocumentArray([

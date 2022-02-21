@@ -3,3 +3,4 @@ TransformerTorchEncoder\__pycache__
 *.pyc
 *.pyc
 *.pyc
+workspace/SimpleIndexer/index.db
