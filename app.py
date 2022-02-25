@@ -21,3 +21,4 @@ encoder.encode(docs=q_da)
 indexer.search(docs=q_da)
 for m in q_da[0].matches:
     print(f'score: {m.scores["cosine"].value:.4f}, text: {m.text}')
+    
