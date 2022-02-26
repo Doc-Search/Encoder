@@ -19,12 +19,6 @@ indexer.index(docs=da)
 q_da = DocumentArray([Document(text='convert number to modulus')])
 encoder.encode(docs=q_da)
 indexer.search(docs=q_da)
-<<<<<<< HEAD
 
 for rank, m in enumerate(q_da[0].matches):
     print(f'rank: {rank}, text: {m.text}')
-=======
-for m in q_da[0].matches:
-    print(f'score: {m.scores["cosine"].value:.4f}, text: {m.text}')
-    
->>>>>>> e577b57f88e360836c9d64d2eff2cb85285277b6
