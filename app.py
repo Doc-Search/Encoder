@@ -7,10 +7,10 @@ indexer = Executor.load_config(
     'SimpleIndexer/config.yml', uses_metas={'workspace': './workspace'})
 
 da = DocumentArray([
-    Document(text="abs() Returns the absolute value of a number"),
     Document(text="chr() Returns a character from the specified Unicode code."),
     Document(text="set() Returns a new set object"),
     Document(text="sum() Sums the items of an iterator"),
+    Document(text="abs() Returns the absolute value of a number"),
     Document(text="tuple() Returns a tuple")])
 
 encoder.encode(docs=da)
