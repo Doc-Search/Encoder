@@ -5,6 +5,7 @@ encoder = Executor.load_config(
     'TransformerTorchEncoder/config.yml', uses_with={'device': 'cuda'})
 indexer = Executor.load_config(
     'SimpleIndexer/config.yml', uses_metas={'workspace': './workspace'})
+ranker = Executor.from_hub('jinahub://DPRReaderRanker')
 
 da = DocumentArray([
     Document(text="chr() Returns a character from the specified Unicode code."),
@@ -19,6 +20,6 @@ indexer.index(docs=da)
 q_da = DocumentArray([Document(text='convert number to modulus')])
 encoder.encode(docs=q_da)
 indexer.search(docs=q_da)
-
-for rank, m in enumerate(q_da[0].matches):
-    print(f'rank: {rank}, text: {m.text}')
+ranker.rank(docs=q_da)
+for m in q_da[0].matches:
+    print(f'score: {m.scores["relevance_score"].value:.4f}, text: {m.text}')
