@@ -1,0 +1,11 @@
+# ignore everything
+**
+.*
+
+# Allow files and directories
+!config.yml
+!*.py
+!*requirements*.txt
+!README.md
+!*.yml
+!LICENSE

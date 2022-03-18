@@ -2,10 +2,11 @@ from docarray import Document, DocumentArray
 from jina import Executor
 
 encoder = Executor.load_config(
-    'TransformerTorchEncoder/config.yml', uses_with={'device': 'cuda'})
+    'DPRTextEncoder/config.yml', uses_with={'device': 'cuda'})
 indexer = Executor.load_config(
     'SimpleIndexer/config.yml', uses_metas={'workspace': './workspace'})
-ranker = Executor.from_hub('jinahub://DPRReaderRanker')
+ranker = Executor.load_config(
+    'DPRReaderRanker/config.yml', uses_metas={'workspace': './workspace'})
 
 da = DocumentArray([
     Document(text="chr() Returns a character from the specified Unicode code."),
@@ -17,7 +18,7 @@ da = DocumentArray([
 encoder.encode(docs=da)
 indexer.index(docs=da)
 
-q_da = DocumentArray([Document(text='convert number to modulus')])
+q_da = DocumentArray([Document(text='convert a string to a tuple')])
 encoder.encode(docs=q_da)
 indexer.search(docs=q_da)
 ranker.rank(docs=q_da)
